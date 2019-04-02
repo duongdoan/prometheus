@@ -29,4 +29,4 @@ scrape_configs:
     metrics_path: '/minio/prometheus/metrics'
     scrape_interval: 5s
     static_configs:
-    - targets: ['minio:9944']
+    - targets: ['minio:9000']
