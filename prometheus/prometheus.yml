@@ -33,10 +33,10 @@ scrape_configs:
     
     relabel_configs:
     - source_labels: ['__meta_consul_address']
-        separator: ';'
-        target_label:  '__address__'
-        replacement: '${1}:15000'
-        action: 'replace'
+      separator: ';'
+      target_label:  '__address__'
+      replacement: '${1}:15000'
+      action: 'replace'
     
   - job_name: 'mbh-image'
     metrics_path: '/minio/prometheus/metrics'
