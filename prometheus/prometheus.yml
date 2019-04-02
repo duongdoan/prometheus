@@ -24,3 +24,9 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
     - targets: ['web-config:14404','web-common:14401','web-product:14403','web-gateway:14000','web-report:14400']
+    
+  - job_name: 'mbh-image'
+    metrics_path: '/minio/prometheus/metrics'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['minio:9944']
