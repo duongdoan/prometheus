@@ -23,4 +23,4 @@ scrape_configs:
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['service-dev_web-config_1:14404']
+    - targets: ['service-dev_web-config_1:14404','172.19.0.5:14404']
