@@ -19,11 +19,17 @@ scrape_configs:
 #    static_configs:
 #    - targets: ['127.0.0.1:9090']
 
-  - job_name: 'mbh-web'
+  - job_name: 'mbh-dev-web'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 15s
     static_configs:
     - targets: ['web-config:14404','web-common:14401','web-product:14403','web-gateway:14000','web-report:14400']
+    
+  - job_name: 'mbh-dev-demo'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 15s
+    static_configs:
+    - targets: ['172.16.0.139:14404']
     
   - job_name: 'mbh-image'
     metrics_path: '/minio/prometheus/metrics'
