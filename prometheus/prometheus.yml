@@ -21,12 +21,12 @@ scrape_configs:
 
   - job_name: 'mbh-web'
     metrics_path: '/actuator/prometheus'
-    scrape_interval: 5s
+    scrape_interval: 15s
     static_configs:
     - targets: ['web-config:14404','web-common:14401','web-product:14403','web-gateway:14000','web-report:14400']
     
   - job_name: 'mbh-image'
     metrics_path: '/minio/prometheus/metrics'
-    scrape_interval: 5s
+    scrape_interval: 15s
     static_configs:
     - targets: ['minio:9000']
