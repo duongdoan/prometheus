@@ -19,8 +19,8 @@ scrape_configs:
     static_configs:
     - targets: ['127.0.0.1:9090']
 
-  - job_name: 'mbh-web-config'
+  - job_name: 'mbh-web'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['172.19.0.5:14404']
+    - targets: ['service-dev_web-config_1:14404']
