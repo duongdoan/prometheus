@@ -38,9 +38,9 @@ scrape_configs:
       replacement: '${1}:15000'
       action: 'replace'
     - source_labels: ['__meta_consul_service','__meta_consul_service_address']
-      separator: ';'
+      separator: '_'
       target_label:  'instance'
-      replacement: '${1}-${2}'
+      replacement: '${1}${2}'
       action: 'replace'
     
   - job_name: 'mbh-image'
