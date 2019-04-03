@@ -19,13 +19,14 @@ scrape_configs:
 #    static_configs:
 #    - targets: ['127.0.0.1:9090']
 
-  - job_name: 'mbh-dev-web'
+  
+  - job_name: 'mbh-dev-docker'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 15s
     static_configs:
-    - targets: ['web-config:15000','web-common:15000','web-product:15000','web-gateway:15000','web-report:15000']
+    - targets: ['cadvisor:8080']
     
-  - job_name: 'mbh-dev-demo'
+  - job_name: 'mbh-dev-microservice'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 15s
     consul_sd_configs:
@@ -43,7 +44,7 @@ scrape_configs:
       replacement: '${1}${2}'
       action: 'replace'
     
-  - job_name: 'mbh-image'
+  - job_name: 'mbh-dev-microservice-image'
     metrics_path: '/minio/prometheus/metrics'
     scrape_interval: 15s
     static_configs:
