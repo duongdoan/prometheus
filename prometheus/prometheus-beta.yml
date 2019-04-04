@@ -13,36 +13,32 @@ rule_files:
 # Here it's Prometheus itself.
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-#  - job_name: 'prometheus'
+  - job_name: 'prometheus'
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
-#    static_configs:
-#    - targets: ['127.0.0.1:9090']
-
-#  - job_name: 'mbh-beta-monitoring-cadvisor'
-#    dns_sd_configs:
-#    - names:
-#      - 'tasks.cadvisor'
-#      type: 'A'
-#      port: 8080
-
-#  - job_name: 'mbh-beta-monitoring-node-exporter'
-#    dns_sd_configs:
-#    - names:
-#      - 'tasks.node-exporter'
-#      type: 'A'
-#      port: 9100
-      
-  - job_name: 'mbh-beta-docker'
-    scrape_interval: 15s
     static_configs:
-    - targets: ['ip-172-31-13-15.ap-southeast-1.compute.internal:15001','ip-172-31-13-15.ap-southeast-1.compute.internal:15002','ip-172-31-14-199.ap-southeast-1.compute.internal:15001','ip-172-31-14-199.ap-southeast-1.compute.internal:15002']
-    
-  - job_name: 'mbh-beta-microservice'
+    - targets: ['127.0.0.1:9090']
+
+  - job_name: 'monitor-cadvisor'
+    dns_sd_configs:
+    - names:
+      - 'tasks.cadvisor'
+      type: 'A'
+      port: 8080
+
+  - job_name: 'monitor-node-exporter'
+    dns_sd_configs:
+    - names:
+      - 'tasks.node-exporter'
+      type: 'A'
+      port: 9100
+      
+   
+  - job_name: 'microservice'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 15s
     consul_sd_configs:
-    - server: 'ip-172-31-13-15.ap-southeast-1.compute.internal:9002'
+    - server: 'common-discovery:9002'
     
     relabel_configs:
     - source_labels: ['__meta_consul_address']
@@ -56,7 +52,7 @@ scrape_configs:
       replacement: '${1}${2}'
       action: 'replace'
     
-  - job_name: 'mbh-beta-microservice-image'
+  - job_name: 'microservice-image'
     metrics_path: '/minio/prometheus/metrics'
     scrape_interval: 15s
     static_configs:
