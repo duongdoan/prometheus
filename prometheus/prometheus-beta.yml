@@ -16,10 +16,12 @@ scrape_configs:
   - job_name: 'prometheus'
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
+    scrape_interval: 30s
     static_configs:
     - targets: ['127.0.0.1:9090']
 
   - job_name: 'monitor-cadvisor'
+    scrape_interval: 15s
     dns_sd_configs:
     - names:
       - 'tasks.cadvisor'
@@ -27,6 +29,7 @@ scrape_configs:
       port: 8080
 
   - job_name: 'monitor-node-exporter'
+    scrape_interval: 15s
     dns_sd_configs:
     - names:
       - 'tasks.node-exporter'
@@ -57,6 +60,6 @@ scrape_configs:
     
   - job_name: 'microservice-image'
     metrics_path: '/minio/prometheus/metrics'
-    scrape_interval: 15s
+    scrape_interval: 30s
     static_configs:
     - targets: ['minio_minio_1:9000']
