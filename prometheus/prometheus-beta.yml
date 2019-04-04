@@ -51,6 +51,10 @@ scrape_configs:
       target_label:  'instance'
       replacement: '${1}${2}'
       action: 'replace'
+    - source_labels: ['__meta_consul_service']
+      target_label:  'application'
+      replacement: '${1}'
+      action: 'replace'
     
   - job_name: 'microservice-image'
     metrics_path: '/minio/prometheus/metrics'
