@@ -46,13 +46,12 @@ scrape_configs:
       target_label:  '__address__'
       replacement: '${1}:15000'
       action: 'replace'
-    - source_labels: ['__meta_consul_service','__meta_consul_service_address']
-      separator: '_'
+    - source_labels: ['__meta_consul_service_address']
       target_label:  'instance'
-      replacement: '${1}${2}'
+      replacement: '${1}'
       action: 'replace'
     - source_labels: ['__meta_consul_service']
-      target_label:  'application'
+      target_label:  'app'
       replacement: '${1}'
       action: 'replace'
     
