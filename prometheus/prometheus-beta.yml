@@ -21,7 +21,7 @@ scrape_configs:
     - targets: ['127.0.0.1:9090']
 
   - job_name: 'monitor-cadvisor'
-    scrape_interval: 15s
+    scrape_interval: 30s
     dns_sd_configs:
     - names:
       - 'tasks.cadvisor'
@@ -29,7 +29,7 @@ scrape_configs:
       port: 8080
 
   - job_name: 'monitor-node-exporter'
-    scrape_interval: 15s
+    scrape_interval: 30s
     dns_sd_configs:
     - names:
       - 'tasks.node-exporter'
@@ -39,7 +39,7 @@ scrape_configs:
    
   - job_name: 'microservice'
     metrics_path: '/actuator/prometheus'
-    scrape_interval: 15s
+    scrape_interval: 30s
     consul_sd_configs:
     - server: 'common-discovery:9002'
     
