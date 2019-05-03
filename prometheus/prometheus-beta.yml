@@ -58,8 +58,4 @@ scrape_configs:
       replacement: '${1}'
       action: 'replace'
     
-  - job_name: 'microservice-image'
-    metrics_path: '/minio/prometheus/metrics'
-    scrape_interval: 30s
-    static_configs:
-    - targets: ['minio_minio_1:9000']
+
