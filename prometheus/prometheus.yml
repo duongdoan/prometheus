@@ -52,7 +52,7 @@ scrape_configs:
       replacement: '${1}${2}'
       action: 'replace'
     
-  - job_name: 'kafka-jmx'
+  - job_name: 'kafka'
     static_configs:
       - targets: ['broker:7071'] 
     
